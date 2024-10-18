@@ -1,5 +1,6 @@
 import { FaRegCirclePlay } from "react-icons/fa6";
 
+// navbar logo
 const Logo = () => {
   return (
     <a

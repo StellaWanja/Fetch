@@ -18,7 +18,10 @@ export default {
         },
         lightgreen: {
           DEFAULT: "#CAFFE0",
-        }
+        },
+        pink: {
+          DEFAULT: "#FFC9FF",
+        },
       },
     },
   },

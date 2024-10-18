@@ -19,7 +19,7 @@ const Navbar = () => {
     <>
       {/* navbar for larger screen sizes */}
       {!isOpen && (
-        <nav className="bg-green flex justify-between items-center py-8 sm:py-4 px-10">
+        <nav className="bg-green flex justify-between items-center py-8 sm:py-4 c-space">
           <Logo />
           <div className="sm:flex hidden gap-12">
             <NavbarLinks />

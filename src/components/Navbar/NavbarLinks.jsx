@@ -1,6 +1,7 @@
 import React from "react";
 import { navLinks } from "../../constants";
 
+// links for navbar
 const NavbarLinks = () => {
   return (
     <ul className="flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20">
