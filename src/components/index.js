@@ -1,5 +1,8 @@
 import Navbar from "./Navbar/Navbar";
 import Button from "./Button/Button";
-import Hero from "./Hero/Hero";
+import Hero from "./LandingPage/Hero";
+import Albums from "./LandingPage/Albums";
+import About from "./LandingPage/About";
+import Footer from "./Footer/Footer";
 
-export { Navbar, Button, Hero };
+export { Navbar, Button, Hero, Albums, About, Footer };

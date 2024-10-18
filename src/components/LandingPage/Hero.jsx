@@ -1,4 +1,3 @@
-import React from "react";
 // file imports
 import Button from "../Button/Button";
 import HeroImg from "../../assets/hero-img.jpg";
@@ -15,7 +14,7 @@ const Hero = () => {
           Discover your entire music library, select albums with ease, dive into
           full album details instantly.
         </p>
-        <Button btnStyle="filled">Get Started</Button>
+        <Button variant="filled" btnStyle="lightgreen">Get Started</Button>
       </div>
 
       <div className="w-full mx-auto overflow-hidden flex justify-center relative">

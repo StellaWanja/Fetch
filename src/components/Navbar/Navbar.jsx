@@ -25,8 +25,12 @@ const Navbar = () => {
             <NavbarLinks />
           </div>
           <div className="sm:flex hidden gap-4">
-            <Button btnStyle="outline">Login</Button>
-            <Button btnStyle="filled">Sign up</Button>
+            <Button variant="outline" btnStyle="lightgreen">
+              Login
+            </Button>
+            <Button variant="filled" btnStyle="lightgreen">
+              Sign up
+            </Button>
           </div>
           {/* button to toggle menu on small screens */}
           <button

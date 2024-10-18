@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Navbar } from "./components/index.js";
+import { Footer, Navbar } from "./components/index.js";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <Outlet />
       </main>
       <footer>
-        
+        <Footer />
       </footer>
     </>
   );
