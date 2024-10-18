@@ -1,0 +1,27 @@
+@import url("https://fonts.cdnfonts.com/css/general-sans");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "General Sans", sans-serif;
+  color: "#ffffff";
+}
+
+@layer utilities {
+  .c-space {
+    @apply sm:px-10 px-5;
+  }
+  /* button styles */
+  .btn-outline {
+    @apply bg-transparent text-lightgreen font-semibold border-lightgreen border-2 rounded-full px-6 py-2 hover:bg-lightgreen hover:text-green transition-colors ease-in delay-150;
+  }
+  .btn-filled {
+    @apply bg-lightgreen text-green font-semibold rounded-full border-2 border-lightgreen px-6 py-2 hover:bg-transparent hover:text-lightgreen hover:border-lightgreen  transition-colors ease-in delay-150;
+  }
+}
