@@ -5,21 +5,16 @@ import Img03 from "../assets/img-03.jpg";
 export const navLinks = [
   {
     id: 1,
-    title: "Home",
-    href: "#home",
-  },
-  {
-    id: 2,
     title: "Albums",
     href: "#collections",
   },
   {
-    id: 3,
+    id: 2,
     title: "About",
     href: "#about",
   },
   {
-    id: 4,
+    id: 3,
     title: "Contact",
     href: "#contact",
   },

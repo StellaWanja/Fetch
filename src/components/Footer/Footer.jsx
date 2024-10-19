@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="w-full bg-green py-10 c-space flex flex-col sm:flex-row gap-4 justify-around">
+    <div id="contact" className="w-full bg-green py-10 c-space flex flex-col sm:flex-row gap-4 justify-around">
       <div className="text-lightgreen flex flex-col justify-between">
         <Logo />
         <p>Fetch, {new Date().getFullYear()}. All rights reserved.</p>

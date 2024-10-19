@@ -1,5 +1,6 @@
 import { Albums, Hero, About } from "../../components";
 
+// landing page
 const Home = () => {
   return (
     <>

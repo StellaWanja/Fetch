@@ -5,6 +5,7 @@ import { HiOutlineMenu } from "react-icons/hi";
 import NavbarLinks from "./NavbarLinks";
 import Button from "../Button/Button";
 import Logo from "./Logo";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   // state to handle when menu is open or not
@@ -25,12 +26,11 @@ const Navbar = () => {
             <NavbarLinks />
           </div>
           <div className="sm:flex hidden gap-4">
-            <Button variant="outline" btnStyle="lightgreen">
-              Login
-            </Button>
-            <Button variant="filled" btnStyle="lightgreen">
-              Sign up
-            </Button>
+            <Link to={"/auth"}>
+              <Button variant="outline" btnStyle="lightgreen">
+                Login
+              </Button>
+            </Link>
           </div>
           {/* button to toggle menu on small screens */}
           <button

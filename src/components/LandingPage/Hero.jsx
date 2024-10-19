@@ -1,6 +1,7 @@
 // file imports
 import Button from "../Button/Button";
 import HeroImg from "../../assets/hero-img.jpg";
+import { Link } from "react-router-dom";
 
 // hero section
 const Hero = () => {
@@ -14,7 +15,11 @@ const Hero = () => {
           Discover your entire music library, select albums with ease, dive into
           full album details instantly.
         </p>
-        <Button variant="filled" btnStyle="lightgreen">Get Started</Button>
+        <Link to={"/auth"}>
+          <Button variant="filled" btnStyle="lightgreen">
+            Get Started
+          </Button>
+        </Link>
       </div>
 
       <div className="w-full mx-auto overflow-hidden flex justify-center relative">
@@ -27,7 +32,7 @@ const Hero = () => {
           className="hidden w-1/2 md:block object-cover rounded-t-full"
         />
         <span className="absolute bottom-10 right-0 lg:bottom-10 lg:right-40 bg-pink rounded-full px-5 py-2">
-         Fetch is simply the best. <strong>- Anonymous</strong>
+          Fetch is simply the best. <strong>- Anonymous</strong>
         </span>
       </div>
     </section>
