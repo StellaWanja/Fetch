@@ -1,19 +1,27 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { FaRegCircleXmark } from "react-icons/fa6";
 import { HiOutlineMenu } from "react-icons/hi";
 //  file imports
 import NavbarLinks from "./NavbarLinks";
 import Button from "../Button/Button";
 import Logo from "./Logo";
-import { Link } from "react-router-dom";
+import { useLogout } from "../../hooks/useLogout";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const Navbar = () => {
   // state to handle when menu is open or not
   const [isOpen, setIsOpen] = useState(false);
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
 
   // toggle menu
   const toggleMenu = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
+  };
+
+  const logOutHandler = async () => {
+    logout();
   };
 
   return (
@@ -26,11 +34,25 @@ const Navbar = () => {
             <NavbarLinks />
           </div>
           <div className="sm:flex hidden gap-4">
-            <Link to={"/auth"}>
-              <Button variant="outline" btnStyle="lightgreen">
-                Login
-              </Button>
-            </Link>
+            {/* set buttons based on login status */}
+            {!user && (
+              <Link to={"/auth/login"}>
+                <Button variant="outline" btnStyle="lightgreen">
+                  Sign in
+                </Button>
+              </Link>
+            )}
+            {user && (
+              <Link to={"/auth/login"}>
+                <Button
+                  variant="outline"
+                  btnStyle="lightgreen"
+                  onClick={logOutHandler}
+                >
+                  Sign Out
+                </Button>
+              </Link>
+            )}
           </div>
           {/* button to toggle menu on small screens */}
           <button

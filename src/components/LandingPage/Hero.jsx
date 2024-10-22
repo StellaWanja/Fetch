@@ -15,7 +15,7 @@ const Hero = () => {
           Discover your entire music library, select albums with ease, dive into
           full album details instantly.
         </p>
-        <Link to={"/auth"}>
+        <Link to={"/auth/login"}>
           <Button variant="filled" btnStyle="lightgreen">
             Get Started
           </Button>

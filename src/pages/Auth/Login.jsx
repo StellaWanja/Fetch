@@ -1,9 +1,26 @@
-import React from "react";
 import { FcGoogle } from "react-icons/fc";
+// file imports
 import HeroImg from "../../assets/hero-img.jpg";
 import { Button, Logo } from "../../components";
+import { useNavigate } from "react-router-dom";
+import { useLogin } from "../../hooks/useLogin";
 
 const Login = () => {
+  const navigate = useNavigate();
+  // google login hook
+  const { login, loading, error } = useLogin();
+
+  const googleLogin = async () => {
+    try {
+      await login();
+
+      //navigate to dashboard
+      navigate("/dashboard");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <section className="w-full min-h-screen flex justify-between items-center">
       <div className="h-screen flex flex-col c-space bg-white w-full sm:w-1/2 relative">
@@ -15,7 +32,8 @@ const Login = () => {
           <h2 className="text-3xl font-medium text-green pb-4">Join Today</h2>
           <p className="pb-4 text-green">Sign in with one of our providers</p>
 
-          <Button btnStyle="green">
+          {error && <p className="text-red-500">{error}</p>}
+          <Button btnStyle="green" onClick={googleLogin} disabled={loading}>
             <div className="flex align-middle justify-center gap-2 py-2">
               <FcGoogle className="hidden sm:block text-2xl" />
               Sign in with Google

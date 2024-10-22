@@ -6,7 +6,7 @@ function App() {
   const location = useLocation();
 
   // Define path where the navbar should be hidden
-  const hideNavbarPaths = ["/auth"];
+  const hideNavbarPaths = ["/auth/login"];
 
   // Check if the current route should hide the navbar
   const shouldHideNavbar = hideNavbarPaths.includes(location.pathname);

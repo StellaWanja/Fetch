@@ -1,4 +1,4 @@
-import { albumImages } from "../../constants";
+import { albumImages1, albumImages2 } from "../../constants";
 
 const Albums = () => {
   return (
@@ -14,7 +14,7 @@ const Albums = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center py-20">
-          {albumImages.map(({ id, url }) => (
+          {albumImages1.map(({ id, url }) => (
             <div key={id} className="w-full sm:w-1/4 h-[250px] overflow-hidden">
               <img
                 src={url}
@@ -42,7 +42,7 @@ const Albums = () => {
           nunc libero penatibus auctor. Facilisi dignissim fusce
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-20">
-          {albumImages.map(({ id, url }) => (
+          {albumImages2.map(({ id, url }) => (
             <div key={id} className="w-full h-[500px] sm:w-1/4 overflow-hidden">
               <img
                 src={url}

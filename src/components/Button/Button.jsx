@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ variant, children, btnStyle }) => {
+const Button = ({ variant, children, btnStyle, onClick, disabled }) => {
   // styles for the buttons
   const baseStyles =
     "font-semibold rounded-full px-6 py-2 transition-colors ease-in delay-150";
@@ -22,7 +22,15 @@ const Button = ({ variant, children, btnStyle }) => {
       ? `${baseStyles} ${greenOutlineStyles}`
       : `${baseStyles} ${greenFilledStyles}`;
 
-  return <button className={btnStyle === "lightgreen" ? lightgreenClass : greenClass}>{children}</button>;
+  return (
+    <button
+      className={btnStyle === "lightgreen" ? lightgreenClass : greenClass}
+      disabled={disabled}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
 };
 
 export default Button;

@@ -47,7 +47,7 @@ const About = () => {
           faucibus dictum ultrices mi a fermentum per?
         </p>
 
-        <Link to="/auth">
+        <Link to="/auth/login">
           <Button variant="filled" btnStyle="green">
             Get started
           </Button>
