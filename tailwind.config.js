@@ -16,6 +16,9 @@ export default {
         white: {
           DEFAULT: "#FFFAE7",
         },
+        lightgray: {
+          DEFAULT: "#F8F7F3",
+        },
         lightgreen: {
           DEFAULT: "#CAFFE0",
         },

@@ -1,5 +1,5 @@
 // file imports
-import Button from "../Button/Button";
+import Button from "../../components/Button/Button";
 import HeroImg from "../../assets/hero-img.jpg";
 import { Link } from "react-router-dom";
 

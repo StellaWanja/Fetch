@@ -2,23 +2,14 @@ import { FcGoogle } from "react-icons/fc";
 // file imports
 import HeroImg from "../../assets/hero-img.jpg";
 import { Button, Logo } from "../../components";
-import { useNavigate } from "react-router-dom";
 import { useLogin } from "../../hooks/useLogin";
 
 const Login = () => {
-  const navigate = useNavigate();
   // google login hook
   const { login, loading, error } = useLogin();
 
   const googleLogin = async () => {
-    try {
-      await login();
-
-      //navigate to dashboard
-      navigate("/dashboard");
-    } catch (error) {
-      console.log(error);
-    }
+    await login();
   };
 
   return (

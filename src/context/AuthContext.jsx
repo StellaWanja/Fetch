@@ -1,13 +1,17 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 
 export const AuthContext = createContext();
 
 const authReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
-      return { ...state, user: action.payload };
+      return {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
+      };
     case "LOGOUT":
-      return { ...state, user: null };
+      return { ...state, user: null, token: null };
     default:
       return state;
   }
@@ -16,23 +20,30 @@ const authReducer = (state, action) => {
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {
     user: null,
+    token: null,
   });
+  // Loading state to prevent routing before auth status is confirmed
+  const [loading, setLoading] = useState(true);
 
   // set user to stay on dashboard if local storage still has user even after refresh
   useEffect(() => {
-    const user = JSON.parse(JSON.stringify(localStorage.getItem("user")));
+    const token = localStorage.getItem("token");
+    const storedUser = localStorage.getItem("user");
 
-    console.log("my user is", user);
-
-    if (user) {
-      dispatch({ type: "LOGIN", payload: user });
+    if (token) {
+      dispatch({
+        type: "LOGIN",
+        payload: { token, user: JSON.parse(storedUser) },
+      });
     }
+
+    setLoading(false);
   }, []);
 
-  console.log(state);
+  console.log("my state is", state);
 
   return (
-    <AuthContext.Provider value={{ ...state, dispatch }}>
+    <AuthContext.Provider value={{ ...state, dispatch, loading }}>
       {children}
     </AuthContext.Provider>
   );
