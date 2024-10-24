@@ -46,7 +46,7 @@ export const useLogin = () => {
         });
 
         //navigate to dashboard
-        navigate("/dashboard");
+        navigate(`/dashboard?id=${user.uid}`);
       } else {
         setError("Could not retrieve user data.");
       }

@@ -49,9 +49,16 @@ const Dashboard = () => {
       <h1 className="text-green text-4xl font-medium">
         Welcome {user?.displayName}
       </h1>
-      {loading && <p>Loading...</p>}
-      {/* {!loading && <Table users={users} />} */}
-      {!loading && users.map((user) => <Card key={user.id} user={user} albums={albums} />)}
+
+      <div>
+        <p className="py-4 text-green text-xl font-medium">Users</p>
+        {loading && <p>Loading...</p>}
+        {/* {!loading && <Table users={users} />} */}
+        {!loading &&
+          users.map((user) => (
+            <Card key={user.id} user={user} albums={albums} />
+          ))}
+      </div>
     </section>
   );
 };
