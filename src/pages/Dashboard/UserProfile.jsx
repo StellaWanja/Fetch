@@ -1,21 +1,25 @@
 import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useUsersProfile } from "../../hooks/useUsersProfile";
-import Card from "../../components/Card/Card";
 import { useProfileContext } from "../../hooks/useProfileContext";
 import { useAlbums } from "../../hooks/useAlbums";
+import { CardProfile } from "../../components";
 
-const Dashboard = () => {
+const UserProfile = () => {
   // data from context
-  const { owner, loading: authLoading } = useAuthContext();
+  const { loading: authLoading } = useAuthContext();
   const { getUsers, loading: usersLoading, error } = useUsersProfile();
   const { users, albums } = useProfileContext();
   const { getAlbums } = useAlbums();
 
-  // display data on mount
+  // get user id from params
+  const [searchParams] = useSearchParams();
+  const uid = searchParams.get("uid");
+
   useEffect(() => {
+    // Fetch users if authentication check is complete
     try {
-      // Only fetch users and albums if authentication check is complete
       const fetchUsers = async () => !authLoading && (await getUsers());
       const fetchAlbums = async () => !authLoading && (await getAlbums());
 
@@ -26,38 +30,33 @@ const Dashboard = () => {
     }
   }, []);
 
+  const user = users.find((user) => user.id === parseInt(uid));
+  const userAlbums = albums.filter((album) => album.userId === parseInt(uid));
+
   return (
     <section className="c-space py-8 bg-white w-full min-h-screen">
-      <h1 className="text-green text-4xl font-medium">
-        Welcome {owner?.displayName}
-      </h1>
+      <h1 className="text-green text-4xl font-medium">User Details</h1>
 
       <div>
-        <p className="py-4 text-green text-xl font-medium">Users</p>
-
         {/* display loading indicator */}
         {authLoading ||
           (usersLoading && (
             <p className="text-green text-xl font-medium">Loading...</p>
           ))}
 
-        {/* if no users found, display text */}
-        {!usersLoading && users.length === 0 && (
-          <p className="text-green text-xl font-medium">No users found</p>
+        {/* if no user found, display text */}
+        {!usersLoading && !user && (
+          <p className="text-green text-xl font-medium">No user found</p>
         )}
 
         {/* display error if any */}
         {error && <p className="text-red-500 text-xl font-medium">{error}</p>}
-        
-        {/* display users */}
-        {!usersLoading &&
-          users.length > 0 &&
-          users.map((user) => (
-            <Card key={user.id} user={user} albums={albums} />
-          ))}
+
+        {/* display user albums and details */}
+        <CardProfile user={user} albums={userAlbums} />
       </div>
     </section>
   );
 };
 
-export default Dashboard;
+export default UserProfile;

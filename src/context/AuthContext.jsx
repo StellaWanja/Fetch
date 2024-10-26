@@ -7,11 +7,11 @@ const authReducer = (state, action) => {
     case "LOGIN":
       return {
         ...state,
-        user: action.payload.user,
+        owner: action.payload.owner,
         token: action.payload.token,
       };
     case "LOGOUT":
-      return { ...state, user: null, token: null };
+      return { ...state, owner: null, token: null };
     default:
       return state;
   }
@@ -19,21 +19,21 @@ const authReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {
-    user: null,
+    owner: null,
     token: null,
   });
   // Loading state to prevent routing before auth status is confirmed
   const [loading, setLoading] = useState(true);
 
-  // set user to stay on dashboard if local storage still has user even after refresh
+  // set owner to stay on dashboard if local storage still has owner even after refresh
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const storedUser = localStorage.getItem("user");
+    const storedOwner = localStorage.getItem("owner");
 
     if (token) {
       dispatch({
         type: "LOGIN",
-        payload: { token, user: JSON.parse(storedUser) },
+        payload: { token, owner: JSON.parse(storedOwner) },
       });
     }
 

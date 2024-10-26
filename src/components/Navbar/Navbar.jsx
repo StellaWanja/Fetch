@@ -13,7 +13,7 @@ const Navbar = () => {
   // state to handle when menu is open or not
   const [isOpen, setIsOpen] = useState(false);
   const { logout } = useLogout();
-  const { user } = useAuthContext();
+  const { owner } = useAuthContext();
 
   // toggle menu
   const toggleMenu = () => {
@@ -35,14 +35,14 @@ const Navbar = () => {
           </div>
           <div className="sm:flex hidden gap-4">
             {/* set buttons based on login status */}
-            {!user && (
+            {!owner && (
               <Link to={"/auth/login"}>
                 <Button variant="outline" btnStyle="lightgreen">
                   Sign in
                 </Button>
               </Link>
             )}
-            {user && (
+            {owner && (
               <Link to={"/auth/login"}>
                 <Button
                   variant="outline"

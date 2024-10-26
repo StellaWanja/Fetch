@@ -10,7 +10,7 @@ export const useLogout = () => {
 
     try {
       localStorage.removeItem("token");
-      localStorage.removeItem("user");
+      localStorage.removeItem("owner");
 
       // dispatch logout action
       dispatch({ type: "LOGOUT" });

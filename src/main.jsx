@@ -7,29 +7,37 @@ import {
 } from "react-router-dom";
 
 import App from "./App.jsx";
-import { Dashboard, ErrorPage, Home, Login } from "./pages/index.js";
+import {
+  Dashboard,
+  ErrorPage,
+  Home,
+  Login,
+  UserProfile,
+} from "./pages/index.js";
 import { AuthContextProvider } from "./context/AuthContext.jsx";
 import { useAuthContext } from "./hooks/useAuthContext";
+import { ProfileContextProvider } from "./context/ProfileContext.jsx";
 
 import "./index.css";
 
 export const ProtectedRoute = ({ children }) => {
-  const { user, token, loading } = useAuthContext();
+  const { owner, token, loading } = useAuthContext();
 
   // Show a loading indicator while checking authentication status
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  // If user or token doesn't exist, redirect to login page
-  if (!user || !token) {
+  // If owner or token doesn't exist, redirect to login page
+  if (!owner || !token) {
     return <Navigate to="/auth/login" />;
   }
 
-  // If user and token exist, render the children (dashboard, etc.)
+  // If owner and token exist, render the children (dashboard, etc.)
   return children;
 };
 
+// routes
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,6 +54,14 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "/users",
+        element: (
+          <ProtectedRoute>
+            <UserProfile />
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
 ]);
@@ -54,7 +70,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthContextProvider>
-      <RouterProvider router={router} />
+      <ProfileContextProvider>
+        <RouterProvider router={router} />
+      </ProfileContextProvider>
     </AuthContextProvider>
   </StrictMode>
 );

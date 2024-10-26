@@ -1,14 +1,18 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 
 // display user card
 const Card = ({ user, albums }) => {
   const { id, name, email } = user;
+  const navigate = useNavigate();
 
   // get albums per user
-  const albumsPerUser = albums.filter(album => album.userId === id);
+  const albumsPerUser = albums.filter((album) => album.userId === parseInt(id));
 
   return (
-    <div className="flex flex-col gap-4 sm:flex-row justify-between shadow-md py-4 px-8 rounded mb-8 cursor-pointer hover:bg-lightgray transition-colors ease-in delay-150">
+    <div
+      onClick={() => navigate(`/users?uid=${id}`)}
+      className="flex flex-col gap-4 sm:flex-row justify-between shadow-md py-4 px-8 rounded mb-8 cursor-pointer hover:bg-lightgray transition-colors ease-in delay-150"
+    >
       <div>
         <h3 className="text-lg text-green font-semibold">{name}</h3>
         <p className="text-neutral-700">{email}</p>

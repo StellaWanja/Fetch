@@ -26,29 +26,29 @@ export const useLogin = () => {
       // if user data could be fetched
       if (result && result.user) {
         const token = result.user.accessToken;
-        const user = result.user;
+        const owner = result.user;
 
         // Store token in localStorage
         localStorage.setItem("token", token);
         localStorage.setItem(
-          "user",
+          "owner",
           JSON.stringify({
-            displayName: user.displayName,
-            email: user.email,
-            uid: user.uid,
+            displayName: owner.displayName,
+            email: owner.email,
+            uid: owner.uid,
           })
         );
 
         // Dispatch user data and token to context
         dispatch({
           type: "LOGIN",
-          payload: { token, user },
+          payload: { token, owner },
         });
 
         //navigate to dashboard
-        navigate(`/dashboard?id=${user.uid}`);
+        navigate(`/dashboard?id=${owner.uid}`);
       } else {
-        setError("Could not retrieve user data.");
+        setError("Could not retrieve owner data.");
       }
     } catch (error) {
       console.error(error);
