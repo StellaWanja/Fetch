@@ -14,7 +14,13 @@ export const useUsersProfile = () => {
 
     try {
       const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users"
+        "https://jsonplaceholder.typicode.com/users",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
       );
 
       // if response was not 200

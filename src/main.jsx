@@ -13,6 +13,8 @@ import {
   Home,
   Login,
   UserProfile,
+  AlbumProfile,
+  PhotoProfile,
 } from "./pages/index.js";
 import { AuthContextProvider } from "./context/AuthContext.jsx";
 import { useAuthContext } from "./hooks/useAuthContext";
@@ -59,6 +61,22 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <UserProfile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/albums",
+        element: (
+          <ProtectedRoute>
+            <AlbumProfile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/photos",
+        element: (
+          <ProtectedRoute>
+            <PhotoProfile />
           </ProtectedRoute>
         ),
       },

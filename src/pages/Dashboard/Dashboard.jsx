@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useUsersProfile } from "../../hooks/useUsersProfile";
-import Card from "../../components/Card/Card";
 import { useProfileContext } from "../../hooks/useProfileContext";
 import { useAlbums } from "../../hooks/useAlbums";
+import { DashboardCard } from "../../components";
 
 const Dashboard = () => {
   // data from context
@@ -48,12 +48,12 @@ const Dashboard = () => {
 
         {/* display error if any */}
         {error && <p className="text-red-500 text-xl font-medium">{error}</p>}
-        
+
         {/* display users */}
         {!usersLoading &&
           users.length > 0 &&
           users.map((user) => (
-            <Card key={user.id} user={user} albums={albums} />
+            <DashboardCard key={user.id} user={user} albums={albums} />
           ))}
       </div>
     </section>

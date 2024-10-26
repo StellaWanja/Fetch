@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 // display user card
-const Card = ({ user, albums }) => {
+const DashboardCard = ({ user, albums }) => {
   const { id, name, email } = user;
   const navigate = useNavigate();
 
@@ -25,4 +25,4 @@ const Card = ({ user, albums }) => {
   );
 };
 
-export default Card;
+export default DashboardCard;

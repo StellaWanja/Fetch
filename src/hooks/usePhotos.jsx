@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { useProfileContext } from "./useProfileContext";
 
-export const useAlbums = () => {
+export const usePhotos = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const { dispatch } = useProfileContext();
 
-  // fetch albums
-  const getAlbums = async () => {
+  // fetch photos
+  const getPhotos = async () => {
     setLoading(true);
     setError(null);
 
     try {
       const response = await fetch(
-        "https://jsonplaceholder.typicode.com/albums",
+        "https://jsonplaceholder.typicode.com/photos",
         {
           headers: {
             "Content-Type": "application/json",
@@ -25,12 +25,12 @@ export const useAlbums = () => {
 
       // if response was not 200
       if (!response.ok) {
-        throw new Error("Failed to fetch albums");
+        throw new Error("Failed to fetch photos");
       }
 
       const data = await response.json();
 
-      dispatch({ type: "SET_ALBUMS", payload: data });
+      dispatch({ type: "SET_PHOTOS", payload: data });
     } catch (error) {
       console.error(error);
       setLoading(false);
@@ -40,5 +40,5 @@ export const useAlbums = () => {
     }
   };
 
-  return { getAlbums, loading, error };
+  return { getPhotos, loading, error };
 };

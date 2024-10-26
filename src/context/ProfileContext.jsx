@@ -2,6 +2,7 @@ import { createContext, useReducer } from "react";
 
 export const ProfileContext = createContext();
 
+// reducer function
 const profileReducer = (state, action) => {
   switch (action.type) {
     case "SET_USERS":
@@ -27,9 +28,10 @@ const profileReducer = (state, action) => {
 const INITIAL_STATE = {
   users: [],
   albums: [],
-  photos: null,
+  photos: [],
 };
 
+// context provider
 export const ProfileContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(profileReducer, INITIAL_STATE);
 
