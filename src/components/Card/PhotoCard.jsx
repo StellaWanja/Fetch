@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Modal, Box } from "@mui/material";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import Button from "../Button/Button";
-import { useProfileContext } from "../../hooks/useProfileContext";
+import { useProfileContext } from "../../hooks/profileHooks/useProfileContext";
 
 const PhotoCard = ({ photo = {} }) => {
   const { title, url, thumbnailUrl } = photo;

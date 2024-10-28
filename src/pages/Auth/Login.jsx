@@ -2,7 +2,7 @@ import { FcGoogle } from "react-icons/fc";
 // file imports
 import HeroImg from "../../assets/hero-img.jpg";
 import { Button, Logo } from "../../components";
-import { useLogin } from "../../hooks/useLogin";
+import {useLogin} from "../../hooks/authHooks/useLogin";
 
 const Login = () => {
   // google login hook

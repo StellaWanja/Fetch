@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { useAuthContext } from "../../../hooks/useAuthContext";
-import { useAlbums } from "../../../hooks/useAlbums";
-import { useProfileContext } from "../../../hooks/useProfileContext";
-import { usePhotos } from "../../../hooks/usePhotos";
+import { useAuthContext } from "../../../hooks/authHooks/useAuthContext";
+import { useAlbums } from "../../../hooks/profileHooks/useAlbums";
+import { useProfileContext } from "../../../hooks/profileHooks/useProfileContext";
+import { usePhotos } from "../../../hooks/profileHooks/usePhotos";
 import { AlbumCard } from "../../../components";
 
 const AlbumProfile = () => {

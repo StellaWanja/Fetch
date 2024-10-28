@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../utils/firebase.config";
+import { auth } from "../../utils/firebase.config";
 import { useAuthContext } from "./useAuthContext";
 
 // hook to sign in with google

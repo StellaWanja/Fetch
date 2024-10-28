@@ -16,8 +16,8 @@ import {
   AlbumProfile,
   PhotoProfile,
 } from "./pages/index.js";
+import { useAuthContext } from "./hooks/authHooks/useAuthContext.jsx";
 import { AuthContextProvider } from "./context/AuthContext.jsx";
-import { useAuthContext } from "./hooks/useAuthContext";
 import { ProfileContextProvider } from "./context/ProfileContext.jsx";
 
 import "./index.css";

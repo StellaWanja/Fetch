@@ -1,71 +1,66 @@
 import "@testing-library/jest-dom";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { MemoryRouter } from "react-router-dom";
-import { FaRegCircleXmark } from "react-icons/fa6";
-import { HiOutlineMenu } from "react-icons/hi";
 import Navbar from "./Navbar";
-import { useLogout } from "../../hooks/useLogout";
-import { useAuthContext } from "../../hooks/useAuthContext";
+import * as authHooks from "../../hooks/authHooks/useLogout";
+import { AuthContext } from "../../context/AuthContext";
 
-// Mock custom hooks
-jest.mock("../../hooks/useAuthContext");
-jest.mock("../../hooks/useLogout");
+// Mock logout function and authcontext value
+const mockLogout = vi.fn();
+const mockAuthContextValue = (owner = null) => ({
+  owner,
+  token: owner ? "test-token" : null, // Mock token if owner exists
+  dispatch: vi.fn(), // Mock dispatch function
+  loading: false, // loading is false for testing
+});
+const mockOwner = {
+  displayName: "Test User",
+  email: "test@example.com",
+  uid: "test-uid",
+};
 
 // Navbar tests
 describe("Navbar", () => {
-  // Mock functions and data
-  const mockLogout = jest.fn();
-  const mockOwner = { displayName: "Test User" };
+  // Render Navbar component with mock authcontext value
+  const renderNavbar = (owner = null) => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue(owner)}>
+        <MemoryRouter>
+          <Navbar />
+        </MemoryRouter>
+      </AuthContext.Provider>
+    );
+  };
 
-  // Reset mocks before each test
+  // Mock the useLogout hook before each test
   beforeEach(() => {
-    jest.clearAllMocks();
-    // Set up useLogout hook mock to return logout function
-    useLogout.mockReturnValue({ logout: mockLogout });
+    vi.spyOn(authHooks, "useLogout").mockReturnValue({ logout: mockLogout });
   });
 
-  it("renders 'Sign in' button when user is not logged in", () => {
-    // Set up useAuthContext hook mock to return null for owner and token
-    useAuthContext.mockReturnValue({ owner: null, token: null });
+  // Reset mocks after each test
+  afterEach(async () => {
+    vi.clearAllMocks();
+  });
 
-    // Render Navbar component
-    render(
-      <MemoryRouter>
-        <Navbar />
-      </MemoryRouter>
-    );
+  it("should render 'Sign in' button when user is not logged in", () => {
+    renderNavbar(); //no owner provided
 
     // Expect 'Sign in' button to be rendered
     expect(screen.getByText(/sign in/i)).toBeInTheDocument();
-    expect(screen.queryByText(/sign out/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/sign Out/i)).not.toBeInTheDocument();
   });
 
-  it("renders 'Sign out' button when user is logged in", () => {
-    // Set up useAuthContext hook mock to return mockOwner and token
-    useAuthContext.mockReturnValue({ owner: mockOwner, token: "test-token" });
-
-    // Render Navbar component
-    render(
-      <MemoryRouter>
-        <Navbar />
-      </MemoryRouter>
-    );
+  it("should render 'Sign out' button when user is logged in", () => {
+    renderNavbar(mockOwner);
 
     // Expect 'Sign out' button to be rendered
     expect(screen.getByText(/sign out/i)).toBeInTheDocument();
     expect(screen.queryByText(/sign in/i)).not.toBeInTheDocument();
   });
 
-  it("calls logout function when 'Sign out' button is clicked", () => {
-    // Set up useAuthContext hook mock to return mockOwner and token
-    useAuthContext.mockReturnValue({ owner: mockOwner, token: "test-token" });
-
-    // Render Navbar component
-    render(
-      <MemoryRouter>
-        <Navbar />
-      </MemoryRouter>
-    );
+  it("should call logout function when 'Sign out' button is clicked", () => {
+    renderNavbar(mockOwner);
 
     // Simulate click on 'Sign out' button
     fireEvent.click(screen.getByText(/sign out/i));

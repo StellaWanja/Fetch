@@ -6,8 +6,8 @@ import { HiOutlineMenu } from "react-icons/hi";
 import NavbarLinks from "./NavbarLinks";
 import Button from "../Button/Button";
 import Logo from "./Logo";
-import { useLogout } from "../../hooks/useLogout";
-import { useAuthContext } from "../../hooks/useAuthContext";
+import { useLogout } from "../../hooks/authHooks/useLogout";
+import { useAuthContext } from "../../hooks/authHooks/useAuthContext";
 
 const Navbar = () => {
   // state to handle when menu is open or not
