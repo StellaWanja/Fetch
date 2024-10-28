@@ -74,6 +74,7 @@ const Navbar = () => {
               {/* button to toggle menu on small screens */}
               <button
                 className="text-xl transition ease-in-out delay-150 focus:outline-none text-lightgreen hover:text-white"
+                aria-label="Toggle Menu"
                 onClick={toggleMenu}
               >
                 <FaRegCircleXmark />
