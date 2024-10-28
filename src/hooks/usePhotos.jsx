@@ -40,5 +40,7 @@ export const usePhotos = () => {
     }
   };
 
+  
+
   return { getPhotos, loading, error };
 };

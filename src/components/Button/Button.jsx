@@ -1,5 +1,6 @@
 import React from "react";
 
+// reusable button component
 const Button = ({ variant, children, btnStyle, onClick, disabled }) => {
   // styles for the buttons
   const baseStyles =

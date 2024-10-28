@@ -1,16 +1,18 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { useAuthContext } from "../../hooks/useAuthContext";
-import { usePhotos } from "../../hooks/usePhotos";
-import { useProfileContext } from "../../hooks/useProfileContext";
-import { PhotoCard } from "../../components";
+import { useAuthContext } from "../../../hooks/useAuthContext";
+import { usePhotos } from "../../../hooks/usePhotos";
+import { useAlbums } from "../../../hooks/useAlbums";
+import { useProfileContext } from "../../../hooks/useProfileContext";
+import { PhotoCard } from "../../../components";
 
 const PhotoProfile = () => {
   // data from context
   const { loading: authLoading } = useAuthContext();
   const { loading: photoLoading, error, getPhotos } = usePhotos();
-  const { albums, photos } = useProfileContext();
+  const { photos } = useProfileContext();
+  const { loading: albumLoading } = useAlbums();
 
   const navigate = useNavigate();
 
@@ -44,7 +46,7 @@ const PhotoProfile = () => {
       <div>
         {/* display loading indicator */}
         {authLoading ||
-          (photoLoading && (
+          (albumLoading && photoLoading && (
             <p className="text-green text-xl font-medium">Loading...</p>
           ))}
 

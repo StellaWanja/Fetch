@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 // display photos under album
-const AlbumCard = ({ album, photos, loading }) => {
+const AlbumCard = ({ album, photos }) => {
   const navigate = useNavigate();
 
   return (

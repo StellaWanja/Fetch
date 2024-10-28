@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useAuthContext } from "../../hooks/useAuthContext";
-import { useUsersProfile } from "../../hooks/useUsersProfile";
-import { useProfileContext } from "../../hooks/useProfileContext";
-import { useAlbums } from "../../hooks/useAlbums";
-import { DashboardCard } from "../../components";
+import { useAuthContext } from "../../../hooks/useAuthContext";
+import { useUsersProfile } from "../../../hooks/useUsersProfile";
+import { useProfileContext } from "../../../hooks/useProfileContext";
+import { useAlbums } from "../../../hooks/useAlbums";
+import { DashboardCard } from "../../../components";
 
 const Dashboard = () => {
   // data from context

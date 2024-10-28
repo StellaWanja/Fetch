@@ -1,9 +1,9 @@
 import ErrorPage from "./ErrorPage/ErrorPage";
 import Home from "./Home.jsx/Home";
 import Login from "./Auth/Login";
-import Dashboard from "./Dashboard/Dashboard";
-import UserProfile from "./Dashboard/UserProfile";
-import AlbumProfile from "./Dashboard/AlbumProfile";
-import PhotoProfile from "./Dashboard/PhotoProfile";
+import Dashboard from "./Profiles/Dashboard/Dashboard";
+import UserProfile from "./Profiles/User/UserProfile";
+import AlbumProfile from "./Profiles/Album/AlbumProfile";
+import PhotoProfile from "./Profiles/Photo/PhotoProfile";
 
 export { ErrorPage, Home, Login, Dashboard, UserProfile, AlbumProfile, PhotoProfile };

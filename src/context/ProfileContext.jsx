@@ -20,6 +20,16 @@ const profileReducer = (state, action) => {
         ...state,
         photos: action.payload,
       };
+    case "UPDATE_PHOTO_TITLE":
+      return {
+        ...state,
+        photos: state.photos.map((photo) => {
+          if (photo.id === action.payload.id) {
+            return { ...photo, title: action.payload.title };
+          }
+          return photo;
+        }),
+      };
     default:
       return state;
   }
