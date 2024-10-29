@@ -10,6 +10,7 @@ const DashboardCard = ({ user, albums }) => {
 
   return (
     <div
+    role="button"
       onClick={() => navigate(`/users?uid=${id}`)}
       className="flex flex-col gap-4 sm:flex-row justify-between shadow-md py-4 px-8 rounded mb-8 cursor-pointer hover:bg-lightgray transition-colors ease-in delay-150"
     >

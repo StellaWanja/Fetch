@@ -53,7 +53,7 @@ const PhotoCard = ({ photo = {} }) => {
       setOpen(false);
     } catch (error) {
       console.error(error);
-      setError("Something went wrong. Please try again later.", { error });
+      setError("Something went wrong. Please try again later.");
     }
   };
 
@@ -70,6 +70,7 @@ const PhotoCard = ({ photo = {} }) => {
             <form onSubmit={handleEdit}>
               <IoCloseCircleOutline
                 onClick={handleClose}
+                data-testid="close-btn"
                 className="text-green text-3xl font-black absolute top-5 right-5 cursor-pointer hover:text-neutral-600 transition ease-in delay-150"
               />
               <h2 className="text-green font-medium text-xl pb-4">

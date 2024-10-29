@@ -37,7 +37,7 @@ describe("useLogin", () => {
 
   // Create a wrapper component that provides the AuthContext and MemoryRouter
   const wrapper = ({ children }) => (
-    <AuthContext.Provider>
+    <AuthContext.Provider value={{ dispatch: mockDispatch }}>
       <MemoryRouter>{children}</MemoryRouter>
     </AuthContext.Provider>
   );
@@ -83,9 +83,9 @@ describe("useLogin", () => {
     expect(result.current.loading).toBe(false);
   });
 
-  it("should display error message on login failure", async () => {
+  it("should display error message if user data could not be fetched", async () => {
     // Mock signInWithPopup function to return a promise that rejects with an error and render useLogin hook
-    signInWithPopup.mockRejectedValue(new Error("Login failed"));
+    signInWithPopup.mockRejectedValueOnce(new Error("Firebase error: User not found."));
     const { result } = renderHook(() => useLogin(), { wrapper });
 
     // Call the login function
@@ -94,9 +94,7 @@ describe("useLogin", () => {
     });
 
     // Assertions
-    expect(result.current.error).toBe(
-      "Something went wrong during login. Please try again."
-    );
+    expect(result.current.error).toBe("Something went wrong during login. Please try again.");
     expect(result.current.loading).toBe(false);
   });
 });

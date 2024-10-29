@@ -28,7 +28,7 @@ describe("useLogout", () => {
 
   // Create a wrapper component that provides the AuthContext and MemoryRouter
   const wrapper = ({ children }) => (
-    <AuthContext.Provider>
+    <AuthContext.Provider value={{ dispatch: mockDispatch }}>
       <MemoryRouter>{children}</MemoryRouter>
     </AuthContext.Provider>
   );

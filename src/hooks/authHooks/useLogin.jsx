@@ -47,8 +47,6 @@ export const useLogin = () => {
 
         //navigate to dashboard
         navigate(`/dashboard?id=${owner.uid}`);
-      } else {
-        setError("Could not retrieve owner data.");
       }
     } catch (error) {
       console.error(error);
