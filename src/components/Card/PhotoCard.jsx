@@ -4,7 +4,7 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import Button from "../Button/Button";
 import { useProfileContext } from "../../hooks/profileHooks/useProfileContext";
 
-const PhotoCard = ({ photo = {} }) => {
+const PhotoCard = ({ photo }) => {
   const { title, url, thumbnailUrl } = photo;
 
   const [open, setOpen] = useState(false);

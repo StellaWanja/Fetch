@@ -52,14 +52,14 @@ const PhotoProfile = () => {
 
         {/* if no photo found, display text */}
         {!photoLoading && !photo && (
-          <p className="text-green text-xl font-medium">No album found</p>
+          <p className="text-green text-xl font-medium">No photo found</p>
         )}
 
         {/* display error if any */}
         {error && <p className="text-red-500 text-xl font-medium">{error}</p>}
 
         {/* display album and photos*/}
-        <PhotoCard photo={photo} />
+        {!photoLoading && photo && <PhotoCard photo={photo} />}
       </div>
     </section>
   );

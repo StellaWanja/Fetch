@@ -64,7 +64,9 @@ const AlbumProfile = () => {
         {error && <p className="text-red-500 text-xl font-medium">{error}</p>}
 
         {/* display album and photos*/}
-        <AlbumCard album={album} photos={albumPhotos} />
+        {!albumLoading && album && (
+          <AlbumCard album={album} photos={albumPhotos} />
+        )}
       </div>
     </section>
   );

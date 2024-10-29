@@ -18,7 +18,7 @@ export const useLogin = () => {
   const login = async () => {
     setLoading(true);
     setError(null);
-
+    
     try {
       //google sign in
       const result = await signInWithPopup(auth, googleProvider);
@@ -50,7 +50,6 @@ export const useLogin = () => {
       }
     } catch (error) {
       console.error(error);
-      setLoading(false);
       setError("Something went wrong during login. Please try again.");
     } finally {
       setLoading(false);
