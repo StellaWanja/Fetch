@@ -11,13 +11,12 @@ const mockLogout = vi.fn();
 const mockAuthContextValue = (owner = null) => ({
   owner,
   token: owner ? "test-token" : null, // Mock token if owner exists
-  dispatch: vi.fn(), // Mock dispatch function
   loading: false, // loading is false for testing
 });
 const mockOwner = {
   displayName: "Test User",
   email: "test@example.com",
-  uid: "test-uid",
+  uid: "test-123",
 };
 
 // Navbar tests
