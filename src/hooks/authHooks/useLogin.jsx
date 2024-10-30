@@ -14,7 +14,10 @@ export const useLogin = () => {
 
   //sign in with google
   const googleProvider = new GoogleAuthProvider();
-
+  googleProvider.setCustomParameters({
+    prompt: "select_account",
+  })
+  
   const login = async () => {
     setLoading(true);
     setError(null);
