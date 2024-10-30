@@ -5,6 +5,7 @@ import {
   RouterProvider,
   Navigate,
 } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import App from "./App.jsx";
 import {
@@ -94,3 +95,7 @@ createRoot(document.getElementById("root")).render(
     </AuthContextProvider>
   </StrictMode>
 );
+
+ProtectedRoute.propTypes = {
+  children: PropTypes.node.isRequired,
+};

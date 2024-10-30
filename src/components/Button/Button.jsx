@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 // reusable button component
 const Button = ({ variant, children, btnStyle, onClick, disabled }) => {
@@ -32,6 +32,14 @@ const Button = ({ variant, children, btnStyle, onClick, disabled }) => {
       {children}
     </button>
   );
+};
+
+Button.propTypes = {
+  variant: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  btnStyle: PropTypes.string,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 export default Button;

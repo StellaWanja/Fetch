@@ -1,5 +1,5 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const UserCardProfile = ({ user, albums }) => {
   const navigate = useNavigate();
@@ -81,6 +81,11 @@ const UserCardProfile = ({ user, albums }) => {
       </div>
     </div>
   );
+};
+
+UserCardProfile.propTypes = {
+  user: PropTypes.object.isRequired,
+  albums: PropTypes.array.isRequired,
 };
 
 export default UserCardProfile;

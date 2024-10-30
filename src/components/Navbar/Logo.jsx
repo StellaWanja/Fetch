@@ -1,4 +1,5 @@
 import { FaRegCirclePlay } from "react-icons/fa6";
+import PropTypes from "prop-types";
 
 // navbar logo
 const Logo = ({ variant }) => {
@@ -22,6 +23,10 @@ const Logo = ({ variant }) => {
       <span className="font-semibold">Fetch</span>
     </a>
   );
+};
+
+Logo.propTypes = {
+  variant: PropTypes.oneOf(["lightgreen", "green"]),
 };
 
 export default Logo;

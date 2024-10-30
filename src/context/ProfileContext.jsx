@@ -1,5 +1,7 @@
 import { createContext, useReducer } from "react";
+import PropTypes from "prop-types";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const ProfileContext = createContext();
 
 // reducer function
@@ -51,3 +53,8 @@ export const ProfileContextProvider = ({ children }) => {
     </ProfileContext.Provider>
   );
 };
+
+ProfileContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+

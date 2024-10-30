@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 // display user card
 const DashboardCard = ({ user, albums }) => {
@@ -24,6 +25,11 @@ const DashboardCard = ({ user, albums }) => {
       </div>
     </div>
   );
+};
+
+DashboardCard.propTypes = {
+  user: PropTypes.object.isRequired,
+  albums: PropTypes.array.isRequired,
 };
 
 export default DashboardCard;
