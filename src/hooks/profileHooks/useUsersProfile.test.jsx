@@ -7,6 +7,7 @@ import { ProfileContext } from "../../context/ProfileContext";
 import { useProfileContext } from "./useProfileContext";
 
 // Mock dependencies for testing
+// eslint-disable-next-line no-undef
 global.fetch = vi.fn();
 
 vi.mock("../../context/ProfileContext");

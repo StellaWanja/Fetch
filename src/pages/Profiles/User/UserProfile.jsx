@@ -31,6 +31,7 @@ const UserProfile = () => {
     } catch (error) {
       console.error(error);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const user = users.find((user) => user.id === parseInt(uid));

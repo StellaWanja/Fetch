@@ -1,5 +1,5 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 // display photos under album
 const AlbumCard = ({ album, photos }) => {
@@ -29,6 +29,11 @@ const AlbumCard = ({ album, photos }) => {
       </div>
     </div>
   );
+};
+
+AlbumCard.propTypes = {
+  album: PropTypes.object.isRequired,
+  photos: PropTypes.array.isRequired,
 };
 
 export default AlbumCard;
