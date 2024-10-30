@@ -8,7 +8,11 @@ import { AuthContext } from "../../context/AuthContext";
 import { useAuthContext } from "./useAuthContext";
 
 // Mock dependencies for testing
-vi.mock("firebase/auth");
+vi.mock("firebase/auth", () => ({
+  getAuth: vi.fn(),
+  signInWithPopup: vi.fn(),
+  GoogleAuthProvider: vi.fn(),
+}));
 vi.mock("../../context/AuthContext");
 vi.mock("./useAuthContext");
 vi.mock("react-router-dom", () => ({
@@ -85,16 +89,19 @@ describe("useLogin", () => {
 
   it("should display error message if user data could not be fetched", async () => {
     // Mock signInWithPopup function to return a promise that rejects with an error and render useLogin hook
-    signInWithPopup.mockRejectedValueOnce(new Error("Firebase error: User not found."));
+    signInWithPopup.mockRejectedValue(new Error("Login failed"));
     const { result } = renderHook(() => useLogin(), { wrapper });
 
     // Call the login function
     await act(async () => {
-      result.current.login();
+      await result.current.login();
     });
 
     // Assertions
-    expect(result.current.error).toBe("Something went wrong during login. Please try again.");
+    expect(result.current.error).toBe(
+      "Something went wrong during login. Please try again."
+    );
     expect(result.current.loading).toBe(false);
+    expect(mockDispatch).not.toHaveBeenCalled();
   });
 });
