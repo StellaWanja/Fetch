@@ -31,7 +31,7 @@ describe("PhotoProfile", () => {
     // Mock auth and albums and photos loading state
     useAuthContext.mockReturnValue({ loading: false });
     usePhotos.mockReturnValue({ getPhotos: vi.fn(), loading: true });
-    useAlbums.mockReturnValue({ getAlbums: vi.fn(), loading: true });
+    useAlbums.mockReturnValue({ getAlbums: vi.fn(), loading: false });
     useProfileContext.mockReturnValue({ photos: [], albums: [] });
 
     renderPhotoProfile();

@@ -5,6 +5,7 @@ import { MemoryRouter, useNavigate } from "react-router-dom";
 import PhotoCard from "./PhotoCard";
 import { useProfileContext } from "../../hooks/profileHooks/useProfileContext";
 
+// eslint-disable-next-line no-undef
 global.fetch = vi.fn();
 
 // Mock dependencies for testing

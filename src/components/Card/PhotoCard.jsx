@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Modal, Box } from "@mui/material";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import Button from "../Button/Button";
+import PropTypes from "prop-types";
 import { useProfileContext } from "../../hooks/profileHooks/useProfileContext";
 
 const PhotoCard = ({ photo }) => {
@@ -96,6 +97,10 @@ const PhotoCard = ({ photo }) => {
       </div>
     </div>
   );
+};
+
+PhotoCard.propTypes = {
+  photo: PropTypes.object.isRequired,
 };
 
 export default PhotoCard;

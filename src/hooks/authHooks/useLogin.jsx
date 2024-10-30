@@ -18,7 +18,7 @@ export const useLogin = () => {
   const login = async () => {
     setLoading(true);
     setError(null);
-    
+
     try {
       //google sign in
       const result = await signInWithPopup(auth, googleProvider);
