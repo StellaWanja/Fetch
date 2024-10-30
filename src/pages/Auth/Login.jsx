@@ -17,7 +17,6 @@ const Login = () => {
       <div className="h-screen flex flex-col c-space bg-white w-full sm:w-1/2 relative">
         <div className="text-4xl pt-8">
           <Logo variant="green" />
-          <p>Hello there</p>
         </div>
 
         <div className="w-full lg:w-1/2 h-1/2 flex flex-col justify-center m-auto shadow-xl py-20 px-10 text-gray-700 rounded-lg">
