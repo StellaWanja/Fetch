@@ -15,13 +15,13 @@ const AlbumCard = ({ album, photos }) => {
         {photos.map(({ id, title, url, thumbnailUrl }) => (
           <div
             key={id}
-            className="text-green cursor-pointer hover:text-neutral-600 hover:underline  transition ease-in delay-150"
+            className="text-green cursor-pointer flex flex-col items-center hover:text-neutral-600 hover:underline  transition ease-in delay-150"
             onClick={() => navigate(`/photos?photoId=${id}`)}
           >
             <img
               src={url}
               alt={thumbnailUrl}
-              className="w-[250px] h-[250px] object-cover justify-self-center "
+              className="w-[250px] h-[250px] object-cover"
             />
             <p className="font-medium text-center pb-8 tex-lg">{title}</p>
           </div>
