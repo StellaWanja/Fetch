@@ -14,14 +14,11 @@ export const useLogin = () => {
 
   //sign in with google
   const googleProvider = new GoogleAuthProvider();
-  googleProvider.setCustomParameters({
-    prompt: "select_account",
-  })
-  
+
   const login = async () => {
     setLoading(true);
     setError(null);
-    
+
     try {
       //google sign in
       const result = await signInWithPopup(auth, googleProvider);
